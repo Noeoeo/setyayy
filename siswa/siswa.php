@@ -142,7 +142,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                               
+                        
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -164,11 +164,11 @@
                     <h3>Aplikasi Siakad | WebDev School</h3>
                     <br>
                     <div class="row">
-             
-   <!-- DataTales Example -->
+        
+                <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                           <a href="tambahsiswa.php" class="btn btn-primary"> tambah siswa </a>
+                        <a href="tambahsiswa.php" class="btn btn-primary"> tambah siswa </a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -183,19 +183,27 @@
                                             <th>Edit</th>
                                         </tr>
                                     </thead>
-                                   
+                                    <?php
+                                    include '../db.php';
+                                    $i = 1;
+                                   $data = mysqli_query($koneksi, "SELECT * FROM siswa");
+                                    while($d = mysqli_fetch_array($data)){
+                                    ?>
                                     <tbody>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Galuh setyaningsih</td>
-                                            <td>123456789</td>
-                                            <td>galuhsetianingsih82@gmail.com</td>
-                                            <td>Perempuan</td>
+                                            <td><?php echo $i++ ?></td>
+                                            <td><?php echo $d['nama']; ?></td>
+                                            <td><?php echo $d['nisn']; ?></td>
+                                            <td><?php echo $d['email']; ?></td>
+                                            <td><?php echo $d['jk']; ?></td>
                                             <td>
                                                 <a href="#" class="btn btn-succes "><i class="fa fa-edit"></i></a>
                                                 <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
